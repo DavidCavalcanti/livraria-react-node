@@ -5,38 +5,6 @@
 
 }
 
-.App-header {
-  background-color: #FFF;
-  display: flex; 
-  justify-content: center;  
-}
-
-.opcoes {
-  display: flex;  
-}
-
-.opcao { 
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  text-align: center;
-  font-size: 16px;
-  height: 100%;
-  padding: 0 5px;
-  cursor: pointer;
-  min-width: 120px;
-}
-
-.icones {
-  display: flex;  
-  align-items: center;
-}
-
-.icone {
-  margin-right: 40px;
-  width: 25px;
-}
-
 li {
   list-style: none;
 }
