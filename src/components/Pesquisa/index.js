@@ -45,10 +45,11 @@ function Pesquisa() {
     const [livrosPesquisados, setLivrosPesquisados] = useState([])
 
     const handleSearch = (evento) => {
-        const termoPesquisa = evento.target.value.trim();
+        console.log(evento.target.value)
+        const termoPesquisa = evento.target.value.trim(); // remove espaços em branco extras no início e no final do texto
         if (termoPesquisa) {
             const resultado = livros.filter(livro =>
-                livro.nome.toLowerCase().includes(termoPesquisa.toLowerCase())
+                livro.nome.toLowerCase().includes(termoPesquisa.toLowerCase()) // garante que a pesquisa seja case insensitive (ou seja, sem diferenciar maiúsculas de minúsculas).
             );
             setLivrosPesquisados(resultado);
         } else {
