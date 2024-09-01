@@ -1,5 +1,7 @@
 import { livros } from "./dadosUltimosLancamentos";
 import { Titulo } from "../Titulo";
+import CardRecomenda from "../CardRecomenda";
+import imagemAngular from "../../image/livro2.png"
 import styled from "styled-components";
 
 const UltimosLancamentosContainer = styled.section`
@@ -20,6 +22,7 @@ const NovosLivrosContainer = styled.div`
 function UltimosLancamentos() {
     return (
         <UltimosLancamentosContainer>
+
             <Titulo
                 cor='#EB9B00'
                 tamanhoFonte='36px'
@@ -31,6 +34,13 @@ function UltimosLancamentos() {
                     <img src={livro.src} alt={livro.nome} />
                 ))}
             </NovosLivrosContainer>
+
+            <CardRecomenda
+                titulo="Talvez você tenha interesse em"
+                subtitulo="Angular 11"
+                descricao="Contruindo uma aplicação integrada com Airflow."
+                img={imagemAngular}
+            />
         </UltimosLancamentosContainer>
     )
 }
