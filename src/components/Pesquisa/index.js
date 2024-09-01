@@ -44,15 +44,25 @@ function Pesquisa() {
 
     const [livrosPesquisados, setLivrosPesquisados] = useState([])
 
+    const handleSearch = (evento) => {
+        const termoPesquisa = evento.target.value.trim();
+        if (termoPesquisa) {
+            const resultado = livros.filter(livro =>
+                livro.nome.toLowerCase().includes(termoPesquisa.toLowerCase())
+            );
+            setLivrosPesquisados(resultado);
+        } else {
+            setLivrosPesquisados([]);
+        }
+    };
+
     return (
         <PesquisaContainer>
             <Titulo>Já sabe por onde começar?</Titulo>
             <Subtitulo>Encontre seu livro em nossa estante.</Subtitulo>
             <Input
                 placeholder="Escreva sua próxima leitura"
-                onBlur={(evento) => {
-                    setLivrosPesquisados(livros.filter(livro => livro.nome.includes(evento.target.value)))
-                }}
+                onChange={handleSearch}
             />
             {livrosPesquisados.map(livro => (
                 <Resultado>
