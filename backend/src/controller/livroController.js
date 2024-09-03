@@ -1,4 +1,4 @@
-import { getLivroId, getTodosLivros } from "../services/livroServices.js";
+import { getLivroId, getTodosLivros, insertLivro } from "../services/livroServices.js";
 
 class LivroController {
 
@@ -26,6 +26,16 @@ class LivroController {
         }
 
 
+    }
+
+    static criarLivro(req, res) {
+        try {
+            const novoLivro = insertLivro(req.body);
+            res.status(201).json({ message: "Livro criado! ;-)" });
+
+        } catch (erro) {
+            res.status(400).json({ message: `${erro.message}` });
+        }
     }
 
 }
