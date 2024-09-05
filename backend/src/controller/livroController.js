@@ -1,4 +1,4 @@
-import { getLivroId, getTodosLivros, insertLivro } from "../services/livroServices.js";
+import { getLivroId, getTodosLivros, insertLivro, patchLivro } from "../services/livroServices.js";
 
 class LivroController {
 
@@ -35,6 +35,15 @@ class LivroController {
 
         } catch (erro) {
             res.status(400).json({ message: `${erro.message}` });
+        }
+    }
+
+    static atualizaLivro(req, res) {
+        try {
+            const livros = patchLivro(req.params.id, req.body)
+            res.status(200).json({ message: `Livro Atualizado! ${livros}` });
+        } catch (erro) {
+            res.status(500).json({ message: `${erro.message}` });
         }
     }
 
