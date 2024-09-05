@@ -7,5 +7,6 @@ livroRoutes
     .get("/livros", LivroController.listarTodosLivros)
     .get("/livros/:id", LivroController.buscaLivroId)
     .post("/livros", LivroController.criarLivro)
+    .patch("/livros/:id", LivroController.atualizaLivro)    
 
 export default livroRoutes;
