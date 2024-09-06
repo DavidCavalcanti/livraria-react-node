@@ -19,3 +19,8 @@ export function patchLivro(id, modificacao) {
     livros[idModificacao] = conteudoAtualizado;
     fs.writeFileSync("livros.json", JSON.stringify(livros));
 }
+
+export function removeLivro (id) {        
+    const novosLivros = getTodosLivros().filter(livro => livro.id !== id);    
+    fs.writeFileSync("livros.json", JSON.stringify(novosLivros))    
+}
