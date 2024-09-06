@@ -40,8 +40,15 @@ class LivroController {
 
     static atualizaLivro(req, res) {
         try {
-            patchLivro(req.params.id, req.body)
-            res.status(200).json({ message: `Livro Atualizado!` });
+            const livro = getLivroId(req.params.id);
+
+            if (livro.length !== 0) {
+                patchLivro(req.params.id, req.body)
+                res.status(200).json({ message: `Livro Atualizado!` });
+            } else {
+                res.status(404).json({ message: "Livro não encontrado! :-/" })
+            }
+
         } catch (erro) {
             res.status(500).json({ message: `${erro.message}` });
         }
@@ -49,9 +56,14 @@ class LivroController {
 
     static deletarLivro(req, res) {
         try {
-            removeLivro(req.params.id);
-            res.status(200).json({ message: "Livro removido!" });
+            const livro = getLivroId(req.params.id);
 
+            if (livro.length !== 0) {
+                removeLivro(req.params.id);
+                res.status(200).json({ message: "Livro removido!" });
+            } else {
+                res.status(404).json({ message: "Livro não encontrado! :-/" })
+            }
         } catch (erro) {
             res.status(500).json({ message: `${erro.message}` });
         }
