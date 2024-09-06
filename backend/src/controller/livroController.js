@@ -1,4 +1,4 @@
-import { getLivroId, getTodosLivros, insertLivro, patchLivro } from "../services/livroServices.js";
+import { getLivroId, getTodosLivros, insertLivro, patchLivro, removeLivro } from "../services/livroServices.js";
 
 class LivroController {
 
@@ -14,7 +14,7 @@ class LivroController {
     static buscaLivroId(req, res) {
         try {
             const livro = getLivroId(req.params.id);
-            console.log(livro);
+
             if (livro.length !== 0) {
                 res.status(200).json({ message: "Livro encontrado!", livro });
             } else {
@@ -42,6 +42,16 @@ class LivroController {
         try {
             patchLivro(req.params.id, req.body)
             res.status(200).json({ message: `Livro Atualizado!` });
+        } catch (erro) {
+            res.status(500).json({ message: `${erro.message}` });
+        }
+    }
+
+    static deletarLivro(req, res) {
+        try {
+            removeLivro(req.params.id);
+            res.status(200).json({ message: "Livro removido!" });
+
         } catch (erro) {
             res.status(500).json({ message: `${erro.message}` });
         }
