@@ -12,8 +12,8 @@ export function insertLivro(dados) {
     return fs.writeFileSync("livros.json", JSON.stringify([...livros, dados]));
 }
 
-export function patchLivro(modificacao, id) {
-    let livros = getTodosLivros();
+export function patchLivro(id, modificacao) {
+    let livros = JSON.parse(fs.readFileSync("livros.json"));
     const idModificacao = livros.findIndex(livro => livro.id === id);
     const conteudoAtualizado = { ...livros[idModificacao], ...modificacao };
     livros[idModificacao] = conteudoAtualizado;
