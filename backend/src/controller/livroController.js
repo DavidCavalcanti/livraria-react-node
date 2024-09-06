@@ -30,8 +30,13 @@ class LivroController {
 
     static criarLivro(req, res) {
         try {
-            const novoLivro = insertLivro(req.body);
-            res.status(201).json({ message: "Livro criado! ;-)" });
+            const { nome } = req.body;
+            if (nome) {
+                const novoLivro = insertLivro(req.body);
+                res.status(201).json({ message: "Livro criado! ;-)" });
+            } else {
+                res.status(422).json({ message: "O campo 'nome' é obrigatório!" });
+            }
 
         } catch (erro) {
             res.status(400).json({ message: `${erro.message}` });
