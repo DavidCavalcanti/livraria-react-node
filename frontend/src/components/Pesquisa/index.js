@@ -46,7 +46,6 @@ function Pesquisa() {
     const [livros, setLivros] = useState([]);
 
     const handleSearch = (evento) => {
-        console.log(evento.target.value)
         const termoPesquisa = evento.target.value.trim(); // remove espaços em branco extras no início e no final do texto
         if (termoPesquisa) {
             const resultado = livros.filter(livro =>
@@ -59,9 +58,15 @@ function Pesquisa() {
     };
 
     useEffect(() => {
-        const livrosAPI = getLivros();
+        fetchLivros();
+    }, []);
+
+
+
+    async function fetchLivros() {
+        const livrosAPI = await getLivros();
         setLivros(livrosAPI);
-    }, [])
+    }
 
     return (
         <PesquisaContainer>
