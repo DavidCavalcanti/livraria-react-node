@@ -21,6 +21,6 @@ export function patchLivro(id, modificacao) {
 }
 
 export function removeLivro (id) {        
-    const novosLivros = getTodosLivros().filter(livro => livro.id !== id);    
-    fs.writeFileSync("livros.json", JSON.stringify(novosLivros))    
+    const livrosFiltrado = getTodosLivros().filter(livro => livro.id !== id);    
+    fs.writeFileSync("livros.json", JSON.stringify(livrosFiltrado))    
 }
