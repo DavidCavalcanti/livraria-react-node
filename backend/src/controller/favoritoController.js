@@ -1,4 +1,4 @@
-import { getTodosFavoritos, insertFavorito } from "../services/favoritoServices.js";
+import { getTodosFavoritos, insertFavorito, removeFavorito } from "../services/favoritoServices.js";
 
 class FavoritoController {
 
@@ -26,6 +26,22 @@ class FavoritoController {
             res.status(400).json({ message: `${erro.message}` });
         }
     }
+    static removerFavorito(req, res) {
+        try {
+            const { id } = req.params;
+
+            if (id >= 0 && id !== null) {
+                removeFavorito(id);
+                res.status(200).json({ message: "Livro favorito removido!" });
+            } else {
+                res.status(404).json({ message: "Livro não encontrado! :-/" })
+            }
+        } catch (erro) {
+            res.status(500).json({ message: `${erro.message}` });
+        }
+    }
+
+
 }
 
 export default FavoritoController;
