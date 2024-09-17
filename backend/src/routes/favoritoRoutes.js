@@ -5,6 +5,7 @@ const favoritoRoutes = express.Router();
 
 favoritoRoutes
     .get('/favoritos', FavoritoController.listarTodosFavoritos)
+    .post('/favoritos/:id', FavoritoController.adicionarFavorito)
 
 
 export default favoritoRoutes;
