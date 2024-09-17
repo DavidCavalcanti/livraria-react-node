@@ -7,3 +7,7 @@ export async function getFavoritos() {
 
     return response.data;
 }
+
+export async function postFavoritos(id) {
+    await favoritosAPI.post(`/${id}`)
+}
